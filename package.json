@@ -1,0 +1,47 @@
+{
+  "name": "@mountyco/mongoose-moderate",
+  "version": "1.0.0",
+  "description": "Moderate your mongoose models",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -f unix \"src/**/*.{ts,tsx}\"",
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mountyco/mongoose-moderate.git"
+  },
+  "keywords": [
+    "moderate",
+    "mongoose",
+    "moderate"
+  ],
+  "author": "Anand Siddharth <anand.siddharth@hotmail.com> (https://twitter.com/anand_sid)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mountyco/mongoose-moderate/issues"
+  },
+  "homepage": "https://github.com/mountyco/mongoose-moderate#readme",
+  "dependencies": {
+    "@types/mongoose": "^5.10.3",
+    "deep-diff": "^1.0.2",
+    "mongoose": "^5.11.12"
+  },
+  "devDependencies": {
+    "@types/deep-diff": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "~2.6.1",
+    "@typescript-eslint/parser": "~2.6.1",
+    "eslint": "~6.6.0",
+    "eslint-plugin-tsdoc": "^0.2.10",
+    "typescript": "~3.7.2"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
