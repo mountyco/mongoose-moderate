@@ -8,8 +8,8 @@ export const RevisionSchema: Schema = new Schema({
     old: { type: {}, required: true },
     new: { type: {}, required: true },
     user: { type: {}, required: true },
-    approver: { type: {}, required: true },
-    decliner: { type: {}, required: true },
+    approver: { type: {}, required: false },
+    decliner: { type: {}, required: false },
 }, { timestamps: true });
 
 export interface InterfaceRevision extends Document {
