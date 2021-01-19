@@ -2,6 +2,7 @@
 import { Document, Model, NativeError, Query } from "mongoose";
 import { NeedsModeration } from "../interfaces/needsModeration";
 import { User } from "../interfaces/user";
+import { PendingApprovalError } from "./errors";
 import { logit } from "./logit";
 import { resolveUser, hasChanges } from "./utils";
 
@@ -9,7 +10,7 @@ import { resolveUser, hasChanges } from "./utils";
 export const handleSave = async (newObject: Document): Promise<void> => {
     const user: User = resolveUser(newObject as NeedsModeration);
     if (newObject.isNew) {
-        await logit(newObject._id, (newObject.constructor as Model<Document>).collection.name, "create", {}, newObject.toJSON(), user);
+        // await logit(newObject._id, (newObject.constructor as Model<Document>).collection.name, "create", {}, newObject.toJSON(), user);
         return;
     }
 
@@ -19,6 +20,7 @@ export const handleSave = async (newObject: Document): Promise<void> => {
     if (oldObject) {
         if (hasChanges(newObject, oldObject)) {
             await logit(newObject._id, (newObject.constructor as Model<Document>).collection.name, "update", oldObject.toJSON(), newObject.toJSON(), user);
+            throw new PendingApprovalError();
         }
     } else {
         throw new Error("can't find old object") as NativeError;
